@@ -8,8 +8,15 @@
     SERVER: "https://www.class-central.com/mooc/"
   };
 
-  /* Function that returns the iframe */
-  var getIframe = function(src) {
+  function getWidgetParams(node) {
+    var params = {
+      "id": node.getAttribute("data-id"),
+      "theme": node.getAttribute('data-theme') || CONST.DEFAULT_THEME
+    };
+    return params;
+  }
+
+  function getIframe(src) {
     var iframe = document.createElement("iframe");
     iframe.setAttribute("src", src);
     iframe.setAttribute("width", CONST.DEFAULT_WIDTH);
@@ -18,25 +25,24 @@
     return iframe;
   };
 
-  /* This function is responsible to reading config params 
-   * from the argument and constructing the server url
-   */
-  var getServerUrl = function(paramsObject) {
+  function getServerUrl(params) {
     // TODO: Need to read in params from paramsObject and modify URL
     var courseID = "835/coursera-machine-learning#course-all-reviews";
     var url = CONST.SERVER + courseID;
     return url;
   };
 
-  // Adding the widget in the page
-  var reviewNodes = document.getElementsByClassName('classcentral-review');
-  for (var i = 0; i < reviewNodes.length; i++) {
-    var node = reviewNodes[i];
-    var params = {
-      "id": node.getAttribute("data-id"),
-      "theme": node.getAttribute('data-theme') || CONST.DEFAULT_THEME
-    };
-    var iframe = getIframe(getServerUrl(params));
-    node.parentNode.replaceChild(iframe, node);
+
+  /* draws all widgets in the page */
+  function drawWidgets() {
+    var reviewNodes = document.getElementsByClassName('classcentral-review');
+    for (var i = 0; i < reviewNodes.length; i++) {
+      var node = reviewNodes[i];
+      var params = getWidgetParams(node);
+      var iframe = getIframe(getServerUrl(params));
+      node.parentNode.replaceChild(iframe, node);
+    }
   }
+
+  drawWidgets();
 })();
