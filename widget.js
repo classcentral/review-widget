@@ -11,16 +11,19 @@
   function getWidgetParams(node) {
     var params = {
       "id": node.getAttribute("data-id"),
-      "theme": node.getAttribute('data-theme') || CONST.DEFAULT_THEME
+      "theme": node.getAttribute('data-theme') || CONST.DEFAULT_THEME,
+      "width": node.getAttribute('data-width') || CONST.DEFAULT_WIDTH,
+      "height": node.getAttribute('data-height') || CONST.DEFAULT_HEIGHT
     };
     return params;
   }
 
-  function getIframe(src) {
+  function getIframe(params) {
     var iframe = document.createElement("iframe");
+    var src = getServerUrl(params);
     iframe.setAttribute("src", src);
-    iframe.setAttribute("width", CONST.DEFAULT_WIDTH);
-    iframe.setAttribute("height", CONST.DEFAULT_HEIGHT);
+    iframe.setAttribute("width", params.width);
+    iframe.setAttribute("height", params.height);
     iframe.setAttribute('frameborder', '0');
     return iframe;
   };
@@ -39,7 +42,7 @@
     for (var i = 0; i < reviewNodes.length; i++) {
       var node = reviewNodes[i];
       var params = getWidgetParams(node);
-      var iframe = getIframe(getServerUrl(params));
+      var iframe = getIframe(params);
       node.parentNode.replaceChild(iframe, node);
     }
   }
