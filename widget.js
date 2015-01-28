@@ -5,7 +5,7 @@
     MIN_WIDTH : "220",
     MIN_HEIGHT : "0",
     DEFAULT_THEME: "dark",
-    SERVER: "https://www.class-central.com/mooc/"
+    SERVER: "http://ccwidget.codelight.eu/widget.html"
   };
 
   function getWidgetParams(node) {
@@ -27,7 +27,7 @@
 
   function getServerUrl(params) {
     // TODO: Need to read in params from paramsObject and modify URL
-    var courseID = "835/coursera-machine-learning#course-all-reviews";
+    var courseID = "#/";
     var url = CONST.SERVER + courseID;
     return url;
   };
