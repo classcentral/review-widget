@@ -1,6 +1,6 @@
 (function() {
   var CONST = {
-    DEFAULT_HEIGHT : "320",
+    DEFAULT_HEIGHT : "420",
     DEFAULT_WIDTH : "400",
     MIN_WIDTH : "220",
     MIN_HEIGHT : "0",
@@ -22,8 +22,9 @@
     var iframe = document.createElement("iframe");
     var src = getServerUrl(params);
     iframe.setAttribute("src", src);
-    iframe.setAttribute("width", params.width);
+    //iframe.setAttribute("width", params.width);
     iframe.setAttribute("height", params.height);
+    iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
     return iframe;
   };
