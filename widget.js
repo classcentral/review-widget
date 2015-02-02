@@ -5,13 +5,12 @@
     MIN_WIDTH : "220",
     MIN_HEIGHT : "0",
     DEFAULT_THEME: "dark",
-    SERVER: "http://ccwidget.codelight.eu/widget.html"
+    SERVER: "https://dev.classcentral.io/reviews/widget?"
   };
 
   function getWidgetParams(node) {
     var params = {
-      "id": node.getAttribute("data-id"),
-      "theme": node.getAttribute('data-theme') || CONST.DEFAULT_THEME,
+      "course-id": node.getAttribute("data-courseid"),
       "width": node.getAttribute('data-width') || CONST.DEFAULT_WIDTH,
       "height": node.getAttribute('data-height') || CONST.DEFAULT_HEIGHT
     };
@@ -22,7 +21,6 @@
     var iframe = document.createElement("iframe");
     var src = getServerUrl(params);
     iframe.setAttribute("src", src);
-    //iframe.setAttribute("width", params.width);
     iframe.setAttribute("height", params.height);
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
@@ -31,8 +29,9 @@
 
   function getServerUrl(params) {
     // TODO: Need to read in params from paramsObject and modify URL
-    var courseID = "#/";
-    var url = CONST.SERVER + courseID;
+    var courseID = params["course-id"];
+    var url = CONST.SERVER + "course-id=" + courseID;
+    console.log(url);
     return url;
   };
 
