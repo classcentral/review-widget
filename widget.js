@@ -1,18 +1,17 @@
 (function() {
   var CONST = {
     DEFAULT_HEIGHT : "420",
-    DEFAULT_WIDTH : "400",
     MIN_WIDTH : "220",
     MIN_HEIGHT : "0",
-    DEFAULT_THEME: "dark",
+    DEFAULT_THEME: "light",
     SERVER: "https://dev.classcentral.io/reviews/widget?"
   };
 
   function getWidgetParams(node) {
     var params = {
-      "course-id": node.getAttribute("data-courseid"),
-      "width": node.getAttribute('data-width') || CONST.DEFAULT_WIDTH,
-      "height": node.getAttribute('data-height') || CONST.DEFAULT_HEIGHT
+      "course-id"   : node.getAttribute("data-courseid"),
+      "course-code" : node.getAttribute("data-coursecode"),
+      "height"      : node.getAttribute('data-height') || CONST.DEFAULT_HEIGHT
     };
     return params;
   }
@@ -21,6 +20,7 @@
     var iframe = document.createElement("iframe");
     var src = getServerUrl(params);
     iframe.setAttribute("src", src);
+    iframe.setAttribute("width", "100%");
     iframe.setAttribute("height", params.height);
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
@@ -28,13 +28,16 @@
   };
 
   function getServerUrl(params) {
-    // TODO: Need to read in params from paramsObject and modify URL
-    var courseID = params["course-id"];
-    var url = CONST.SERVER + "course-id=" + courseID;
-    console.log(url);
+    var courseID = params["course-id"],
+        coursecode = params["course-code"],
+        url;
+    if (courseID) {
+      url = CONST.SERVER + "course-id=" + courseID;
+    } else {
+      url = CONST.SERVER + "course-code=" + coursecode;
+    }
     return url;
   };
-
 
   /* draws all widgets in the page */
   function drawWidgets() {
