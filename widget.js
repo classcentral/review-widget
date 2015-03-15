@@ -19,9 +19,9 @@
   function getIframe(params) {
     var iframe = document.createElement("iframe");
     var src = getServerUrl(params);
-    iframe.setAttribute("src", src);
+    iframe.setAttribute("src", src);    
     iframe.setAttribute("width", "100%");
-    iframe.setAttribute("height", params.height);
+    //iframe.setAttribute("height", params.height);
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
     return iframe;
@@ -47,6 +47,7 @@
       var params = getWidgetParams(node);
       var iframe = getIframe(params);
       node.parentNode.replaceChild(iframe, node);
+      iFrameResize([],iframe);
     }
   }
 
