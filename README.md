@@ -4,7 +4,7 @@ CC Widget
 > Just a demo
 
 ```
-$ git clone https://github.com/prakhar1989/Classcentral-widget.git
+$ git clone https://github.com/classcentral/review-widget.git
 $ cd Classcentral-widget
 $ python -m SimpleHTTPServer
 ```
@@ -17,6 +17,6 @@ Widget code for embedding in 3rd party pages
 
 ```HTML
   <!-- classcentral widget code -->
-  <div class="classcentral-review" lang="en" data-id="835" data-theme="light"> </div>
+  <div class="classcentral-review" lang="en" data-id="2161"> </div>
   <script async src="/widget.js" charset="utf-8"></script>
 ```
