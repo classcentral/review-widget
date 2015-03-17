@@ -47,7 +47,9 @@
       var params = getWidgetParams(node);
       var iframe = getIframe(params);
       node.parentNode.replaceChild(iframe, node);
-      iFrameResize([],iframe);
+      iFrameResize({
+        scrollCallback: function(){ return false; }
+      },iframe);
     }
   }
 
