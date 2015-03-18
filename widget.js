@@ -1,17 +1,12 @@
 (function() {
-  var CONST = {
-    DEFAULT_HEIGHT : "420",
-    MIN_WIDTH : "220",
-    MIN_HEIGHT : "0",
-    DEFAULT_THEME: "light",
+  var CONST = {   
     SERVER: "https://dev.classcentral.io/reviews/widget?"
   };
 
   function getWidgetParams(node) {
     var params = {
       "course-id"   : node.getAttribute("data-courseid"),
-      "course-code" : node.getAttribute("data-coursecode"),
-      "height"      : node.getAttribute('data-height') || CONST.DEFAULT_HEIGHT
+      "course-code" : node.getAttribute("data-coursecode"),      
     };
     return params;
   }
@@ -21,6 +16,7 @@
     var src = getServerUrl(params);
     iframe.setAttribute("src", src);    
     iframe.setAttribute("width", "100%");
+    iframe.setAttribute("height", "0px");
     //iframe.setAttribute("height", params.height);
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
@@ -48,7 +44,7 @@
       var iframe = getIframe(params);
       node.parentNode.replaceChild(iframe, node);
       iFrameResize({
-        scrollCallback: function(){ return false; }
+        scrollCallback: function(){ return false; },   
       },iframe);
     }
   }
