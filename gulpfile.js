@@ -1,24 +1,8 @@
-var gulp      = require('gulp'),
-    concat    = require('gulp-concat'),
+var gulp      = require('gulp'),    
     rename    = require('gulp-rename'),
-    uglify    = require('gulp-uglify'),
-    minifyCSS = require('gulp-minify-css');
+    uglify    = require('gulp-uglify');
 
 
-// TODO @Dhawal: Add the CSS files in order
-// that are to be concatenated
-var fileOrder = [
-  'assets/css/widget.css', 
-];
-
-gulp.task('css', function() {
-  gulp.src(fileOrder)
-      .pipe(concat('styles.css'))
-      .pipe(gulp.dest('build'))
-      .pipe(minifyCSS())
-      .pipe(rename('styles.min.css'))
-      .pipe(gulp.dest('build'))
-});
 
 gulp.task('js', function() {
   gulp.src('widget.js')
