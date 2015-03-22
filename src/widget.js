@@ -1,7 +1,4 @@
 (function() {
-  var CONST = {   
-    SERVER: "https://dev.classcentral.io/reviews/widget?"
-  };
 
   function getWidgetParams(node) {
     var params = {
@@ -27,9 +24,9 @@
         coursecode = params["course-code"],
         url;
     if (courseID) {
-      url = CONST.SERVER + "course-id=" + courseID;
+      url = cc_config.BASE_URL + "/reviews/widget?course-id=" + courseID;
     } else {
-      url = CONST.SERVER + "course-code=" + coursecode;
+      url = cc_config.BASE_URL + "/reviews/widget?course-code=" + coursecode;
     }
     return url;
   };
