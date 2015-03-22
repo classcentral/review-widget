@@ -16,8 +16,7 @@
     var src = getServerUrl(params);
     iframe.setAttribute("src", src);    
     iframe.setAttribute("width", "100%");
-    iframe.setAttribute("height", "0px");
-    //iframe.setAttribute("height", params.height);
+    iframe.setAttribute("height", "0px"); // 0 px to account for blank page in case of error    
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute('frameborder', '0');
     return iframe;

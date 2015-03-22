@@ -1,11 +1,15 @@
 var gulp      = require('gulp'),    
     rename    = require('gulp-rename'),
-    uglify    = require('gulp-uglify');
+    uglify    = require('gulp-uglify'),
+    concat    = require('gulp-concat');
 
 
 
 gulp.task('js', function() {
-  gulp.src('widget.js')
+
+
+  gulp.src( ['assets/iframeResizer.min.js','widget.js'])
+    .pipe(concat('all.js'))
     .pipe(uglify())
     .pipe(rename('widget.min.js'))
     .pipe(gulp.dest('build'))
