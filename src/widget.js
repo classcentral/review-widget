@@ -3,7 +3,12 @@
   function getWidgetParams(node) {
     var params = {
       "course-id"   : node.getAttribute("data-courseid"),
-      "course-code" : node.getAttribute("data-coursecode"),      
+      "course-code" : node.getAttribute("data-coursecode"),
+      "course-name" : node.getAttribute("data-course-name"),
+      "provider-name": node.getAttribute("data-provider-name") ,
+      "provider-courseurl" : node.getAttribute("data-provider-courseurl"),
+      "provider-courseid": node.getAttribute("data-provider-courseid")
+
     };
     return params;
   }
@@ -22,11 +27,31 @@
   function getServerUrl(params) {
     var courseID = params["course-id"],
         coursecode = params["course-code"],
+        courseName = params['course-name'],
+        providerName = params['provider-name'],
+        providerCourseUrl = params['provider-courseurl'],
+        providerCourseId = params['provider-courseid'],
         url;
     if (courseID) {
       url = cc_config.BASE_URL + "/reviews/widget?course-id=" + courseID;
     } else {
       url = cc_config.BASE_URL + "/reviews/widget?course-code=" + coursecode;
+    }
+
+    if(courseName){
+      url += '&course-name=' + courseName;
+    }
+
+    if(providerName){
+      url += '&provider-name=' + providerName;
+    }
+
+    if(providerCourseUrl){
+      url +=  '&provider-course-url=' + providerCourseUrl;
+    }
+
+    if(providerCourseId){
+      url += '&provider-course-id=' + providerCourseId;
     }
     return url;
   };
