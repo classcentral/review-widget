@@ -1,19 +1,21 @@
-var gulp      = require('gulp'),    
-    rename    = require('gulp-rename'),
-    uglify    = require('gulp-uglify'),
-    concat    = require('gulp-concat');
+const gulp = require('gulp');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 
-gulp.task('js', function() {
-
-  gulp.src( ['src/config.js','assets/iframeResizer.min.js','src/widget.js'])
-    .pipe(concat('all.js'))
+exports.prod = (cb) => {
+  gulp.src(['src/config.prod.js','assets/iframeResizer.min.js','src/widget.js'])
+    .pipe(concat('widget.min.js'))
     .pipe(uglify())
-    .pipe(rename('widget.min.js'))
     .pipe(gulp.dest('build'))
-   ;
+  ;
+  cb();
+}
 
-});
-
-
-
-gulp.task('default', ['js']);
+exports.dev = (cb) => {
+  gulp.src(['src/config.dev.js','assets/iframeResizer.min.js','src/widget.js'])
+    .pipe(concat('widget.dev.js'))
+    .pipe(gulp.dest('build'))
+  ;
+  cb();
+}
