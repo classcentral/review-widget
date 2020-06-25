@@ -1,0 +1,6 @@
+// Duplicate and rename this file to config.dev.js and update the variables to your local setup
+// config.dev.js is ignored by git
+var cc_config = {
+    ENV          : 'dev',
+    BASE_URL     : 'https://classcentral.test'
+};

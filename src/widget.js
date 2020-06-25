@@ -16,6 +16,7 @@
   function getIframe(params) {
     var iframe = document.createElement("iframe");
     var src = getServerUrl(params);
+    iframe.setAttribute("title", "Class Central Student Ratings");
     iframe.setAttribute("src", src);    
     iframe.setAttribute("width", "100%");
     iframe.setAttribute("height", "0px"); // 0 px to account for blank page in case of error    
