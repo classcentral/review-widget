@@ -1,5 +1,0 @@
-// Rename this file to config.js and update the variables
-var cc_config = {
-    ENV          : 'dev',
-    BASE_URL     : 'https://dev.classcentral.io'
-};
